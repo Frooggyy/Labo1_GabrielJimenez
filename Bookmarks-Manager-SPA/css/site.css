@@ -83,7 +83,7 @@
     display: grid;
     grid-template-columns: 4fr 1fr;
     align-items: top;
-    background-color: rgb(87, 140, 255);
+    background-color: lightgray;
     border-radius: 6px;
 }
 
@@ -112,18 +112,18 @@
     align-items: center;
 }
 
-.bookmarkTile {
-    font-size: 1.1rem;
+.bookmarkTitle {
+    font-size: 1.3rem;
     font-weight: bold;
-    color: white;
+    color: black;
 }
 
 .bookmarkUrl {
-    color: white;
+    color: black;
 }
 
 .bookmarkCategory {
-    color: white;
+    color: black;
 }
 
 .bookmarkCommandPanel {
@@ -131,6 +131,11 @@
     flex-direction: row;
     justify-content: flex-end;
     gap: 8px;
+}
+
+.bookmarkFavicon{
+    height:30px;
+    width: 30px;;
 }
 
 .cmdIcon {

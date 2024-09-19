@@ -26,10 +26,16 @@ function extract_Id_From_Request(req) {
     let parts = req.url.split('/');
     return parseInt(parts[parts.length - 1]);
 }
-function validateBookmark(contact) {
+function validateContact(contact) {
     if (!('Name' in contact)) return 'Name is missing';
     if (!('Phone' in contact)) return 'Phone is missing';
     if (!('Email' in contact)) return 'Email is missing';
+    return '';
+}
+function validateBookmark(bookmark) {
+    if (!('Title' in bookmark)) return 'Title is missing';
+    if (!('Url' in bookmark)) return 'URL is missing';
+    if (!('Category' in bookmark)) return 'Category is missing';
     return '';
 }
 async function handleContactsServiceRequest(req, res) {
@@ -214,9 +220,9 @@ async function handleBookmarkServiceRequest(req, res) {
                                 }
                             }
                             if (storedBookmark != null) {
-                                storedBookmark.Name = modifiedBookmark.Name;
-                                storedBookmark.Phone = modifiedBookmark.Phone;
-                                storedBookmark.Email = modifiedBookmark.Email;
+                                storedBookmark.Title = modifiedBookmark.Title;
+                                storedBookmark.Url = modifiedBookmark.Url;
+                                storedBookmark.Category = modifiedBookmark.Category;
                                 fs.writeFileSync(bookmarksFilePath, JSON.stringify(bookmarks));
                                 res.writeHead(200);
                                 res.end();

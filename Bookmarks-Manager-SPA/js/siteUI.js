@@ -156,41 +156,40 @@ function renderBookmarkForm(bookmark = null) {
         <form class="form" id="bookmarkForm">
             <input type="hidden" name="Id" value="${bookmark.Id}"/>
 
-            <label for="Name" class="form-label">Nom </label>
+            <label for="Titre" class="form-label">Titre </label>
             <input 
                 class="form-control Alpha"
-                name="Name" 
-                id="Name" 
-                placeholder="Nom"
+                name="Title" 
+                id="Title" 
+                placeholder="Titre"
                 required
-                RequireMessage="Veuillez entrer un nom"
-                InvalidMessage="Le nom comporte un caractère illégal" 
-                value="${bookmark.Name}"
+                RequireMessage="Veuillez entrer un titre"
+                InvalidMessage="Le titre comporte un caractère illégal" 
+                value="${bookmark.Title}"
             />
-            <label for="Phone" class="form-label">Téléphone </label>
+            <label for="Url" class="form-label">Url </label>
             <input
-                class="form-control Phone"
-                name="Phone"
-                id="Phone"
-                placeholder="(000) 000-0000"
+                class="form-control Url"
+                name="Url"
+                id="Url"
                 required
-                RequireMessage="Veuillez entrer votre téléphone" 
-                InvalidMessage="Veuillez entrer un téléphone valide"
-                value="${bookmark.Phone}" 
+                RequireMessage="Veuillez entrer un URL" 
+                InvalidMessage="Veuillez entrer un URL valide"
+                value="${bookmark.Url}" 
             />
-            <label for="Email" class="form-label">Courriel </label>
+            <label for="Category" class="form-label">Categorie </label>
             <input 
-                class="form-control Email"
-                name="Email"
-                id="Email"
-                placeholder="Courriel"
+                class="form-control Category"
+                name="Category"
+                id="Category"
+                placeholder="Category"
                 required
-                RequireMessage="Veuillez entrer votre courriel" 
-                InvalidMessage="Veuillez entrer un courriel valide"
-                value="${bookmark.Email}"
+                RequireMessage="Veuillez entrer une categorie" 
+                InvalidMessage="Veuillez entrer une categorie valide"
+                value="${bookmark.Category}"
             />
             <hr>
-            <input type="submit" value="Enregistrer" id="savebookmark" class="btn btn-primary">
+            <input type="submit" value="Enregistrer" id="saveBookmark" class="btn btn-primary">
             <input type="button" value="Annuler" id="cancel" class="btn btn-secondary">
         </form>
     `);
@@ -225,13 +224,12 @@ function renderBookmark(bookmark) {
      <div class="bookmarkRow" bookmark_id=${bookmark.Id}">
         <div class="bookmarkContainer noselect">
             <div class="bookmarkLayout">
-                <span class="bookmarkName">${bookmark.Name}</span>
-                <span class="bookmarkPhone">${bookmark.Phone}</span>
-                <span class="bookmarkEmail">${bookmark.Email}</span>
+                <span class="bookmarkTitle"><img class="bookmarkFavicon"src="http://www.google.com/s2/favicons?domain=${bookmark.Url}"></img>${bookmark.Title}</span>
+                <a href="https://${bookmark.Url}" ><span class="bookmarkCategory">${bookmark.Category}</span></a>
             </div>
             <div class="bookmarkCommandPanel">
-                <span class="editCmd cmdIcon fa fa-pencil" editBookmarkId="${bookmark.Id}" title="Modifier ${bookmark.Name}"></span>
-                <span class="deleteCmd cmdIcon fa fa-trash" deleteBookmarkId="${bookmark.Id}" title="Effacer ${bookmark.Name}"></span>
+                <span class="editCmd cmdIcon fa fa-pencil" editBookmarkId="${bookmark.Id}" title="Modifier ${bookmark.Title}"></span>
+                <span class="deleteCmd cmdIcon fa fa-trash" deleteBookmarkId="${bookmark.Id}" title="Effacer ${bookmark.Title}"></span>
             </div>
         </div>
     </div>           
