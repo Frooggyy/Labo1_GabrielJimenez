@@ -1,6 +1,6 @@
 import { createServer } from 'http';
 import fs from 'fs';
-
+//bello
 function allowAllAnonymousAccess(res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', '*');
@@ -152,8 +152,15 @@ async function handleContactsServiceRequest(req, res) {
     return false;
 }
 
-function handleRequest(req, res) {
-    return handleContactsServiceRequest(req, res);
+async function handleBookmarkServiceRequest(req, res) {
+    // todo
+    return false;
+}
+async function handleRequest(req, res) {
+    if (! await handleContactsServiceRequest(req, res))
+        if (! await handleBookmarkServiceRequest(req, res))
+            return false;
+    return true;
 }
 
 function getPayload(req) {
@@ -174,7 +181,7 @@ const server = createServer(async (req, res) => {
     console.log(req.method, req.url);
     accessControlConfig(req, res);
     if (!CORS_Preflight(req, res))
-        if (!handleRequest(req, res)) {
+        if (!await handleRequest(req, res)) {
             res.writeHead(404);
             res.end();
         }
