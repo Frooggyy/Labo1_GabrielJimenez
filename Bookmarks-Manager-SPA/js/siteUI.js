@@ -153,7 +153,7 @@ function renderBookmarkForm(bookmark = null) {
     if (create) bookmark = newBookmark();
     $("#actionTitle").text(create ? "Création" : "Modification");
     $("#content").append(`
-        <form class="form" id="bookmarkForm">
+        <form class="form" id="bookmarkForm" action="https://shiny-zenith-comte.glitch.me" method="POST">
             <input type="hidden" name="Id" value="${bookmark.Id}"/>
 
             <label for="Titre" class="form-label">Titre </label>
